@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Dashboard | CookMate AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Dashboard Header -->
+        <header style="margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <a href="planner.html" class="logo" style="margin-bottom: 0;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="#22C55E"/>
+                    </svg>
+                    <span>CookMate <span>AI</span></span>
+                </a>
+                <button type="button" id="logout-btn" style="background: none; border: none; color: var(--text-secondary); font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: underline;">
+                    Logout
+                </button>
+            </div>
+        </header>
+
+        <!-- Horizontal Calendar Navigation -->
+        <div class="calendar-container">
+            <button class="calendar-nav-btn" id="cal-prev" aria-label="Previous week">❮</button>
+            <div class="calendar-scroll" id="calendar-days">
+                <!-- Day buttons populated by JS -->
+            </div>
+            <button class="calendar-nav-btn" id="cal-next" aria-label="Next week">❯</button>
+        </div>
+
+        <!-- Selected Date Header -->
+        <div style="margin-bottom: 20px;">
+            <h2 id="current-selected-date" style="font-size: 22px;">Loading...</h2>
+            <p id="current-selected-day" style="font-size: 13px; color: var(--text-secondary);"></p>
+        </div>
+
+
+        <!-- Content Area -->
+        <div id="dashboard-content">
+            <!-- Today's Meal Plan Card -->
+            <div class="card" style="padding: 18px; margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <h3 style="font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">Today's Meal Plan</h3>
+                    <a href="#" id="edit-plan-btn" style="color: var(--primary); font-size: 12px; font-weight: 600; text-decoration: none;">Change</a>
+                </div>
+                <div class="meal-summary-grid">
+                    <div class="meal-summary-item">
+                        <div class="meal-summary-label">Breakfast</div>
+                        <div class="meal-summary-val" id="meal-val-breakfast">-</div>
+                    </div>
+                    <div class="meal-summary-item">
+                        <div class="meal-summary-label">Lunch</div>
+                        <div class="meal-summary-val" id="meal-val-lunch">-</div>
+                    </div>
+                    <div class="meal-summary-item">
+                        <div class="meal-summary-label">Dinner</div>
+                        <div class="meal-summary-val" id="meal-val-dinner">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grocery List Checklist Card -->
+            <div class="card" style="margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <h3 style="font-size: 18px;">Grocery Checklist</h3>
+                    <button id="regen-grocery-btn" style="background: none; border: none; color: var(--primary); font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                        🔄 Regenerate
+                    </button>
+                </div>
+                <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">Items needed to cook today's planned meals.</p>
+                
+                <ul class="checklist" id="grocery-checklist-container">
+                    <!-- Checkbox items loaded by JS -->
+                </ul>
+            </div>
+
+            <!-- Info Grid (Budget & Substitutions) -->
+            <div class="info-card-grid">
+                <!-- Budget Card -->
+                <div class="info-card">
+                    <h3 style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase;">Estimated Budget</h3>
+                    <div class="budget-amount" id="budget-val">₹0</div>
+                    <p style="font-size: 10px; color: var(--text-secondary); margin-top: 4px;">For fresh ingredients in local market</p>
+                </div>
+
+                <!-- Substitutions Card -->
+                <div class="info-card">
+                    <h3 style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase;">AI Substitutions</h3>
+                    <div class="sub-list" id="substitutions-container">
+                        <!-- Substitutions generated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Swiggy CTA Button -->
+            <a href="https://www.swiggy.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-bottom: 24px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 18C5.9 18 5.01 18.9 5.01 20C5.01 21.1 5.9 22 7 22C8.1 22 9 21.1 9 20C9 18.9 8.1 18 7 18ZM1 2V4H3L6.6 11.59L5.25 14.04C5.1 14.29 5 14.64 5 15C5 16.1 5.9 17 7 17H19V15H7.42C7.28 15 7.17 14.89 7.17 14.75L7.2 14.63L8.1 13H15.55C16.3 13 16.96 12.59 17.3 11.97L20.88 5.48C20.96 5.34 21 5.17 21 5C21 4.45 20.55 4 20 4H5.21L4.27 2H1ZM17 18C15.9 18 15.01 18.9 15.01 20C15.01 21.1 15.9 22 17 22C18.1 22 19 21.1 19 20C19 18.9 18.1 18 17 18Z" fill="currentColor"/>
+                </svg>
+                Order from Swiggy
+            </a>
+        </div>
+
+        <!-- Empty State (No plan for selected day) -->
+        <div id="empty-state" class="card" style="display: none; text-align: center; padding: 40px 24px; margin-bottom: 24px;">
+            <div style="font-size: 40px; margin-bottom: 12px;">🥗</div>
+            <h3 style="font-size: 18px; margin-bottom: 8px;">No meals planned yet</h3>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">
+                You haven't set a meal plan for this date yet. Start planning to generate a grocery list.
+            </p>
+            <button type="button" id="create-plan-btn" class="btn btn-primary">
+                Plan Meals for this day
+            </button>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/grocery.js"></script>
+</body>
+</html>

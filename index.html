@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | CookMate AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container" style="justify-content: center;">
+        <header>
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="#22C55E"/>
+                </svg>
+                <span>CookMate <span>AI</span></span>
+            </a>
+            <p class="subtitle">Your personalized daily cooking assistant</p>
+        </header>
+
+        <main class="card">
+            <div id="error-message" class="demo-badge" style="background-color: #FEE2E2; color: #991B1B; display: none; width: 100%; text-align: center; margin-bottom: 16px; padding: 10px;">
+                Invalid credentials.
+            </div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" class="form-input" placeholder="e.g. admin" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-input" placeholder="••••••••" required autocomplete="current-password">
+                </div>
+                
+                <button type="submit" id="login-btn" class="btn btn-primary">
+                    Login
+                </button>
+            </form>
+        </main>
+
+        <div style="text-align: center; margin-top: 10px;">
+            <div class="demo-badge">
+                🔑 Demo Credentials: <strong>admin</strong> / <strong>admin</strong>
+            </div>
+            <p style="font-size: 11px; color: var(--text-muted);">This is a high-fidelity prototype dashboard.</p>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
